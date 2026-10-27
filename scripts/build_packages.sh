@@ -2,7 +2,7 @@
 set -eu
 ROOT=$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)
 NAME=enigma2-plugin-extensions-opencamview
-VER=2.0.1
+VER=2.0.2
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p "$TMP/data/usr/lib/enigma2/python/Plugins/Extensions/OpenCamView" "$TMP/control" "$TMP/deb/DEBIAN" "$ROOT/packages"
@@ -15,7 +15,7 @@ Priority: optional
 Architecture: all
 Maintainer: Paweł Pawełek <msisystem@t.pl>
 Depends: enigma2
-Description: OpenCamView 2.0.1 - Home IP camera viewer for Enigma2 Python3
+Description: OpenCamView 2.0.2 - Home IP camera viewer for Enigma2 Python3
  RTSP playback, ONVIF, PTZ, JPEG overlay, camera wall and patrol,
  RTSP LAN discovery, optional PiP, intercom, backups and bouquets.
 EOF

@@ -1,4 +1,5 @@
 """Minimal standard-library ONVIF Media 1 + PTZ. SOAP WSSE digest."""
+from .i18n import tr
 import os,base64,hashlib,datetime,re,xml.etree.ElementTree as ET
 from urllib.request import Request,build_opener,HTTPPasswordMgrWithDefaultRealm,HTTPDigestAuthHandler,HTTPBasicAuthHandler,HTTPRedirectHandler
 from urllib.parse import urlsplit,urlunsplit
@@ -31,7 +32,7 @@ def soap(url,action,payload,user='',pwd=''):
 
 def endpoint(url,host,protocols=('http','https')):
     p=urlsplit(url)
-    if p.scheme not in protocols:raise ValueError('Niedozwolony protokol')
+    if p.scheme not in protocols:raise ValueError(tr('Niedozwolony protokol'))
     if p.hostname in ('0.0.0.0','localhost','127.0.0.1'):
         net=host+((':%d'%p.port) if p.port else '')
         url=urlunsplit((p.scheme,net,p.path,p.query,p.fragment))
@@ -39,11 +40,11 @@ def endpoint(url,host,protocols=('http','https')):
     return valid(url)
 
 def discover(host,port,user,pwd):
-    if not re.fullmatch(r'[A-Za-z0-9.:-]+',host) or not 0<int(port)<65536:raise ValueError('Bledny host/port')
+    if not re.fullmatch(r'[A-Za-z0-9.:-]+',host) or not 0<int(port)<65536:raise ValueError(tr('Bledny host/port'))
     base='http://%s:%d/onvif/device_service'%(host,int(port))
     cap=soap(base,D+'/GetCapabilities','<tds:GetCapabilities><tds:Category>All</tds:Category></tds:GetCapabilities>',user,pwd)
     media=find(cap,'Media')
-    if media is None or find(media,'XAddr') is None:raise ValueError('Brak ONVIF Media')
+    if media is None or find(media,'XAddr') is None:raise ValueError(tr('Brak ONVIF Media'))
     media_url=endpoint(find(media,'XAddr').text.strip(),host)
     ptz=find(cap,'PTZ');ptzurl=endpoint(find(ptz,'XAddr').text.strip(),host) if ptz is not None and find(ptz,'XAddr') is not None else ''
     profiles=soap(media_url,M+'/GetProfiles','<trt:GetProfiles/>',user,pwd)
@@ -66,11 +67,11 @@ def discover(host,port,user,pwd):
                  'url':credentials(uri,user,pwd),'snapshot':snapshot,'onvif':credentials(ptzurl,user,pwd) if ptzurl else '',
                  'token':token})
         except Exception:continue
-    if not items:raise ValueError('Nie wykryto strumieni ONVIF')
+    if not items:raise ValueError(tr('Nie wykryto strumieni ONVIF'))
     return items
 
 def ptz(url,token,username,password,x,y,z):
-    if not token or any(abs(k)>1 for k in (x,y,z)):raise ValueError('Nieprawidlowy PTZ')
+    if not token or any(abs(k)>1 for k in (x,y,z)):raise ValueError(tr('Nieprawidlowy PTZ'))
     body='<tptz:ContinuousMove><tptz:ProfileToken>%s</tptz:ProfileToken><tptz:Velocity><tt:PanTilt xmlns:tt="http://www.onvif.org/ver10/schema" x="%s" y="%s"/><tt:Zoom xmlns:tt="http://www.onvif.org/ver10/schema" x="%s"/></tptz:Velocity><tptz:Timeout>PT0.4S</tptz:Timeout></tptz:ContinuousMove>'%(esc(token),x,y,z)
     try:soap(url,P+'/ContinuousMove',body,username,password)
     finally:

@@ -1,3 +1,11 @@
+## v2.0.2 — 27.10.2026 (PL/EN + aktualizacje)
+
+- MENU → Narzędzia → Język / Language: ręczny wybór Polski / English / System Auto, zapisywany prywatnie w `/etc/enigma2/opencamview_settings.json`.
+- Przetłumaczono komunikaty UI, kreator kamer, skaner, ONVIF, PTZ i etykiety przycisków.
+- MENU → Narzędzia → Sprawdź aktualizacje / Check for updates: odczyt małego pliku HTTPS `version.json` z repozytorium i porównanie wersji, bez automatycznej instalacji.
+- Nowe testy zmiany języka i obsługi poprawnych, uszkodzonych i niedostępnych manifestów.
+- Zachowano kompatybilność bazy kamer, ustawienia PTZ/RTSP i poprawkę crasha z 2.0.1.
+
 # OpenCamView changelog
 
 ## v2.0.0 — 22.10.2026 (wersja do testów na tunerach)

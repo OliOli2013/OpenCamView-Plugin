@@ -1,12 +1,18 @@
-# OpenCamView 2.0.1 — by: Paweł Pawełek
+# OpenCamView 2.0.2 — by: Paweł Pawełek
 
 Kompletnie przebudowana wtyczka do domowego monitoringu IP/RTSP/ONVIF dla **Enigma2 z Pythonem 3**. Interfejs: granatowe panele, turkusowe akcenty, HD/FHD responsywny skin inspirowany AIO Panel i IPTV Dream.
 
 **Autor:** Paweł Pawełek  
-**Data wydania:** 22.10.2026  
+**Data wydania:** 27.10.2026
 **Strona projektu:** https://aio-iptv-projekt.pages.dev/  
 
-**Naprawiono błąd występujący w 2.0.0:** po wybraniu „Dodaj kamerę” Enigma2 wyrzucało błąd `TypeError: 'dict' object is not callable`. Przyczyną był konflikt nazwy pola formularza z metodą `dict.values()` klasy `Screen`. Wersja 2.0.1 zawiera poprawkę i test regresyjny.
+**Naprawiono błąd występujący w 2.0.0:** po wybraniu „Dodaj kamerę” Enigma2 wyrzucało błąd `TypeError: 'dict' object is not callable`. Przyczyną był konflikt nazwy pola formularza z metodą `dict.values()` klasy `Screen`. Wersja 2.0.1 zawierała poprawkę i test regresyjny; została zachowana w wersji 2.0.2.
+
+## Wersja 2.0.2 – języki i aktualizacje
+
+- **MENU → Narzędzia → Język / Language**: `Polski`, `English` albo `System / Auto` (według języka Enigma2). Wybór zapisuje się bez utraty kamer i jest stosowany natychmiast na ekranie głównym; kolejne okna otwierają się w wybranym języku.
+- **MENU → Narzędzia → Sprawdź aktualizacje / Check for updates**: sprawdza `version.json` w oficjalnym repozytorium (HTTPS), porównuje wersje i wyświetla wynik oraz informacje o wydaniu. **Nie instaluje nic automatycznie**. Potrzebny dostęp do internetu.
+- Nowy plik `version.json` jest publikowany przy każdym wydaniu i musi być aktualizowany wraz z pakietami IPK/DEB oraz `installer.sh`.
 
 ## Nowości
 
@@ -40,13 +46,13 @@ W skanerze: **czerwony** — zamknij, **zielony** — skanuj, **żółty** — d
 Skopiuj do `/tmp` na tunerze właściwy pakiet. **IPK dla opkg:**
 
 ```sh
-opkg install /tmp/enigma2-plugin-extensions-opencamview_2.0.1_all.ipk
+opkg install /tmp/enigma2-plugin-extensions-opencamview_2.0.2_all.ipk
 ```
 
 **DEB dla dpkg:**
 
 ```sh
-dpkg -i /tmp/enigma2-plugin-extensions-opencamview_2.0.1_all.deb
+dpkg -i /tmp/enigma2-plugin-extensions-opencamview_2.0.2_all.deb
 ```
 
 Uruchom ponownie GUI. Pakiety są `Architecture: all` i nie zawierają kodu maszynowego. Nie oznacza to gwarantowanej obsługi wszystkich obrazów Enigma2 ani kodeków. FFmpeg jest opcjonalny. Nie instaluj DEB w systemie opkg.
@@ -57,19 +63,19 @@ Uruchom ponownie GUI. Pakiety są `Architecture: all` i nie zawierają kodu masz
 wget -q -O - https://raw.githubusercontent.com/OliOli2013/OpenCamView-Plugin/main/installer.sh | /bin/sh
 ```
 
-**To polecenie będzie działać dopiero po przesłaniu plików do nowego repozytorium.** Instalator automatycznie wybiera format i sprawdza SHA-256.
+**To polecenie będzie instalować wydanie 2.0.2 dopiero po przesłaniu nowych plików do repozytorium GitHub.** Instalator automatycznie wybiera format i sprawdza SHA-256.
 
 ## GitKraken / Linux Mint
 
-1. Utwórz na GitHub **puste** repozytorium `OliOli2013/OpenCamView-Plugin`, bez domyślnego README. Nie istnieje jeszcze jako samodzielne repo; wersja 1.3 widniała w repozytorium strony.
-2. Rozpakuj paczkę zbiorczą `OpenCamView-Plugin-2.0.1.zip` w dowolnym folderze na komputerze.
-3. Otwórz terminal GitKraken w katalogu `OpenCamView-Plugin` i wykonaj:
+1. Otwórz istniejące lokalne repozytorium `OpenCamView-Plugin` w GitKraken na Linux Mint.
+2. Rozpakuj paczkę aktualizacji `OpenCamView-Plugin-2.0.2.zip` i skopiuj pliki z katalogu `OpenCamView-Plugin/` do istniejącego repozytorium lokalnego, z zastąpieniem zmienionych plików. NIE kopiuj `.git` (paczka nie zawiera `.git`).
+3. W terminalu GitKraken w katalogu istniejącego repozytorium wykonaj:
 
 ```sh
 bash scripts/git_prepare.sh
 ```
 
-Skrypt użyje Twojej tożsamości Git, wykona lokalnie `git init`, `git add`, `git commit` i doda `origin`. **Nie wysyła niczego bez Twojego działania.** Następnie w GitKraken użyj `Push → origin/main` (alternatywnie `git push -u origin main`).
+Skrypt doda zmienione pliki i przygotuje lokalny commit, bez automatycznej publikacji. Następnie wykonaj `Push → origin/main`. Zachowaj dotychczasowy katalog `.git`.
 
 ## Dane, backup i bezpieczeństwo
 
@@ -86,3 +92,5 @@ cd packages && sha256sum -c SHA256SUMS
 ```
 
 Wymagane lokalnie: Python 3, `dpkg-deb`, `ar`, `tar`, `sha256sum`.
+
+**Ważne:** sprawdzenie online zacznie pokazywać 2.0.2 po przesłaniu `version.json`, `installer.sh` i pakietów 2.0.2 do gałęzi `main`. Wydanie musi być opublikowane jako komplet plików w jednym commicie.

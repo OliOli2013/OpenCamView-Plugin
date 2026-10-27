@@ -1,0 +1,8 @@
+{
+  "version": "2.0.2",
+  "date": "2026-10-27",
+  "notes": {
+    "pl": "Dodano języki polski i angielski (również auto według Enigma2) oraz ręczne sprawdzanie aktualizacji z GitHub.",
+    "en": "Added Polish and English languages (also automatic selection from Enigma2) and manual update checks from GitHub."
+  }
+}

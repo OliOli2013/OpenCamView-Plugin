@@ -21,3 +21,6 @@ command -v ffmpeg || echo 'Relay FFmpeg niedostepny'
 ```
 
 Odinstalowanie: `opkg remove enigma2-plugin-extensions-opencamview` lub `dpkg -r enigma2-plugin-extensions-opencamview`; restart GUI. Konfiguracja jest poza pakietem.
+
+12. MENU → Narzędzia → Język / Language: wybierz English; sprawdź menu, skaner, dodawanie kamery, komunikaty i powrót do Polski bez utraty zapisanych kamer.
+13. MENU → Narzędzia → Sprawdź aktualizacje: online powinno pokazywać aktualną wersję, a po odłączeniu internetu powinien pojawić się komunikat błędu, bez crasha.

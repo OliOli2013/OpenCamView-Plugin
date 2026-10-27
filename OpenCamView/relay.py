@@ -1,3 +1,4 @@
+from .i18n import tr
 """Experimental on-demand local HTTP MPEG-TS proxy; requires FFmpeg and compatible hardware PiP."""
 import http.server, socketserver, shutil, threading, subprocess, secrets
 class Server(socketserver.ThreadingMixIn,http.server.HTTPServer):daemon_threads=True;allow_reuse_address=True
@@ -5,7 +6,7 @@ class Relay:
     def __init__(self,rtsp):self.rtsp=rtsp;self.server=None;self.process=None;self.path='/ocv-'+secrets.token_hex(12)
     def start(self):
         ffmpeg=shutil.which('ffmpeg')
-        if not ffmpeg:raise RuntimeError('Brak ffmpeg w obrazie Enigma2')
+        if not ffmpeg:raise RuntimeError(tr('Brak ffmpeg w obrazie Enigma2'))
         o=self
         class Handler(http.server.BaseHTTPRequestHandler):
             def do_GET(self):

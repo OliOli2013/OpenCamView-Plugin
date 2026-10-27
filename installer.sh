@@ -2,7 +2,7 @@
 # Installer usable only after ALL repo files are published on GitHub.
 set -eu
 BASE=https://raw.githubusercontent.com/OliOli2013/OpenCamView-Plugin/main/packages
-PKG=enigma2-plugin-extensions-opencamview_2.0.1_all
+PKG=enigma2-plugin-extensions-opencamview_2.0.2_all
 if ! command -v python3 >/dev/null 2>&1;then echo 'Wymagany Python 3' >&2;exit 1;fi
 if command -v opkg >/dev/null 2>&1;then EXT=ipk
 elif command -v dpkg >/dev/null 2>&1;then EXT=deb
@@ -19,4 +19,4 @@ else
 fi
 (cd "$TMP" && grep "  $PKG.$EXT\$" SHA256SUMS | sha256sum -c -)
 if [ "$EXT" = ipk ];then opkg install "$TMP/$PKG.$EXT";else dpkg -i "$TMP/$PKG.$EXT";fi
-echo 'Restartuj GUI Enigma2 po instalacji OpenCamView 2.0.1'
+echo 'Restartuj GUI Enigma2 po instalacji OpenCamView 2.0.2'

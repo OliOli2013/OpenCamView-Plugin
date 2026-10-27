@@ -1,3 +1,4 @@
+from .i18n import tr
 import os,tempfile
 from urllib.parse import quote
 BASE='/etc/enigma2'
@@ -11,12 +12,12 @@ def atomic_text(path,text):
         if os.path.exists(tmp):os.unlink(tmp)
 def clean(s):return s.replace('\n',' ').replace('\r',' ')[:80]
 def m3u(cams,base=BASE):
-    if not cams:raise ValueError('Brak kamer')
+    if not cams:raise ValueError(tr('Brak kamer'))
     path=os.path.join(base,'opencamview_cameras.m3u')
     atomic_text(path,'#EXTM3U\n'+''.join('#EXTINF:-1,%s\n%s\n'%(clean(c['name']),c['url']) for c in cams))
     return path
 def bouquet(cams,base=BASE):
-    if not cams:raise ValueError('Brak kamer')
+    if not cams:raise ValueError(tr('Brak kamer'))
     path=os.path.join(base,'userbouquet.opencamview.tv')
     atomic_text(path,'#NAME OpenCamView\n'+''.join('#SERVICE 4097:0:1:0:0:0:0:0:0:0:%s\n#DESCRIPTION %s\n'%(quote(c['url'],safe='/'),clean(c['name'])) for c in cams))
     registry=os.path.join(base,'bouquets.tv')

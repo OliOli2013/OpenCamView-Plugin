@@ -1,4 +1,5 @@
 import ipaddress, socket, threading, os, tempfile, time
+from .i18n import tr
 from urllib.parse import urlsplit,unquote
 from urllib.request import build_opener,HTTPPasswordMgrWithDefaultRealm,HTTPDigestAuthHandler,HTTPBasicAuthHandler,Request
 from queue import Queue, Empty
@@ -8,7 +9,7 @@ def subnet():
     s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
     try:
         s.connect(('192.0.2.1',9));ip=s.getsockname()[0]
-        if not ipaddress.ip_address(ip).is_private:raise ValueError('Brak lokalnego IPv4')
+        if not ipaddress.ip_address(ip).is_private:raise ValueError(tr('Brak lokalnego IPv4'))
         return ipaddress.ip_network(ip+'/24',strict=False)
     finally:s.close()
 
@@ -33,7 +34,7 @@ class Scanner:
         try:
             net=ipaddress.ip_network(network,strict=False) if network else subnet()
             if net.version!=4 or not net.is_private or net.num_addresses>256:
-                raise ValueError('Skan dozwolony tylko dla prywatnej podsieci /24 lub mniejszej')
+                raise ValueError(tr('Skan dozwolony tylko dla prywatnej podsieci /24 lub mniejszej'))
             q=Queue()
             for ip in net.hosts():q.put(str(ip))
             def worker():
@@ -69,8 +70,8 @@ def jpeg(url,path):
     req=Request(url,headers={'User-Agent':'OpenCamView/2','Accept':'image/jpeg'})
     with opener.open(req,timeout=5) as res:data=res.read(2097153)
     if len(data)>2097152 or not data.startswith(b'\xff\xd8\xff') or not data.endswith(b'\xff\xd9'):
-        raise ValueError('Serwer nie zwrocil poprawnego JPEG (maks 2 MiB)')
-    if os.path.islink(path):raise ValueError('Niedozwolony plik')
+        raise ValueError(tr('Serwer nie zwrocil poprawnego JPEG (maks 2 MiB)'))
+    if os.path.islink(path):raise ValueError(tr('Niedozwolony plik'))
     fd,tmp=tempfile.mkstemp(prefix='.ocv-img-',dir=os.path.dirname(path))
     try:
         os.fchmod(fd,0o600)
