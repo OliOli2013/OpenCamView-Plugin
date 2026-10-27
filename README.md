@@ -1,394 +1,301 @@
-# OpenCamView 2.0.2 – IP Camera Viewer for Enigma2
+# 📹 OpenCamView 2.0.2 – Monitoring IP dla Enigma2
 
-**by: Paweł Pawełek | AIO Team**
+**OpenCamView – by Paweł Pawełek | AIO Team**
 
 **Wersja:** 2.0.2  
 **Data wydania:** 27.10.2026  
 **Autor:** Paweł Pawełek  
+**Platforma:** Enigma2 / Python 3  
+**Języki:** Polski / English / Auto  
+**Pakiety instalacyjne:** IPK / DEB  
 **Strona projektu:** https://aio-iptv-projekt.pages.dev/  
-**Platforma:** Enigma2 – Python 3  
-**Pakiety:** IPK / DEB  
-**Języki:** Polski / English / System Auto
+**GitHub:** https://github.com/OliOli2013/OpenCamView-Plugin
 
 ---
 
-## 📹 O projekcie OpenCamView
+## 📺 Czym jest OpenCamView?
 
-**OpenCamView** to wtyczka przeznaczona do obsługi kamer IP, monitoringu domowego oraz kamer wejściowych i wideodomofonów na odbiornikach Enigma2.
+**OpenCamView** to wtyczka dla odbiorników telewizji satelitarnej i IPTV pracujących pod kontrolą Enigma2, umożliwiająca obsługę kamer IP bezpośrednio na ekranie telewizora.
 
-Pozwala dodawać i zarządzać kamerami działającymi we własnej sieci lokalnej, oglądać strumienie wideo bezpośrednio na telewizorze oraz korzystać z dodatkowych funkcji podglądu podczas oglądania kanałów telewizyjnych.
+Pozwala zarządzać domowym monitoringiem, oglądać obraz z kamer, korzystać z protokołów RTSP i ONVIF oraz uruchamiać wybrane funkcje bez przerywania oglądania telewizji.
 
-Projekt został zaprojektowany z myślą o wygodnej obsłudze pilotem, czytelnym interfejsie oraz integracji z Enigma2.
+Wtyczka została gruntownie przebudowana. Otrzymała nowoczesny, przejrzysty interfejs z granatowymi panelami, turkusowymi akcentami oraz kolorowymi przyciskami odpowiadającymi klawiszom pilota.
 
-Interfejs wykorzystuje granatowe panele, turkusowe akcenty i kolorowe oznaczenia przycisków, inspirowane projektami **AIO Panel** oraz **IPTV Dream**.
+Interfejs jest przystosowany do wyświetlaczy HD i Full HD.
+
+OpenCamView może być przydatny do obserwowania posesji, podjazdu, bramy, wejścia do domu, garażu czy innych miejsc objętych monitoringiem IP.
 
 ---
 
-## ⭐ Najważniejsze możliwości
+## ⭐ Najważniejsze funkcje
 
-### Zarządzanie kamerami
+### 📹 Obsługa kamer IP
 
-- Dodawanie, edytowanie i usuwanie kamer IP.
-- Obsługa adresów RTSP oraz HTTP/HTTPS.
-- Konfiguracja strumienia głównego i pomocniczego.
-- Obsługa adresów zdjęć JPEG (snapshot).
-- Tworzenie listy ulubionych kamer.
+- Dodawanie, edytowanie i usuwanie kamer.
+- Obsługa strumieni RTSP oraz adresów HTTP/HTTPS.
+- Współpraca z kamerami udostępniającymi standard ONVIF.
+- Konfiguracja głównego i pomocniczego strumienia.
+- Obsługa zdjęć JPEG (snapshot).
+- Zapisywanie ulubionych kamer.
 - Przypisywanie wybranej kamery jako domofonu.
-- Trwała identyfikacja zapisanych kamer.
-- Bezpieczny zapis i odzyskiwanie konfiguracji.
+- Zachowywanie ustawień i zapisanych kamer po aktualizacji.
 
-### Podgląd obrazu
+### 📺 Wyświetlanie obrazu
 
-- Pełnoekranowe odtwarzanie strumienia kamery.
-- Powrót do wcześniej oglądanego kanału TV.
-- Podgląd zdjęć JPEG podczas oglądania telewizji.
-- Eksperymentalna obsługa Picture-in-Picture (PiP).
-- Ściana czterech kamer JPEG.
-- Automatyczny patrol kamer.
-- Regulowany czas odświeżania zdjęć.
+**Podgląd pełnoekranowy**
 
-### ONVIF i PTZ
+Obraz wybranej kamery można uruchomić na całym ekranie telewizora. Po zakończeniu podglądu wtyczka przywraca wcześniej oglądany kanał, o ile w międzyczasie nie nastąpiła zmiana usługi.
 
-- Wyszukiwanie profili kamer ONVIF.
-- Pobieranie adresów strumieni wideo.
-- Pobieranie adresów snapshotów JPEG.
-- Podstawowe sterowanie ruchem kamer PTZ.
-- Obsługa funkcji ContinuousMove i Stop w kompatybilnych urządzeniach.
+**Podgląd JPEG podczas oglądania TV**
 
-Dostępność ONVIF i PTZ zależy od modelu kamery i jej konfiguracji.
+Jedna z ciekawszych funkcji OpenCamView.
 
-### Skanowanie sieci LAN
+Pozwala wyświetlać zdjęcia z kamery na ekranie podczas oglądania programu telewizyjnego, bez konieczności przełączania na strumień kamery.
 
-- Wyszukiwanie serwerów RTSP w prywatnej sieci lokalnej.
-- Sprawdzanie odpowiedzi protokołu RTSP.
-- Dodawanie wykrytych adresów do konfiguracji.
-- Możliwość ręcznego określenia ścieżki strumienia.
+Zdjęcie odświeżane jest co kilka sekund. Nie jest to płynny obraz wideo, lecz cyklicznie aktualizowany snapshot JPEG.
 
-Skaner nie odgaduje automatycznie haseł ani ścieżek RTSP. Wykrycie serwera nie gwarantuje możliwości odtworzenia obrazu.
+**Picture-in-Picture (PiP)**
 
-### Integracja z Enigma2
+Wtyczka podejmuje próbę wyświetlenia obrazu z kamery w osobnym oknie na ekranie telewizora.
 
-- Tworzenie osobnego bukietu kamer.
-- Eksport kamer do listy M3U.
-- Obsługa z poziomu pilota.
-- Kopie bezpieczeństwa ustawień.
-- Odzyskiwanie konfiguracji z pliku `.bak`.
-- Automatyczny dobór języka lub ręczna zmiana.
-- Ręczne sprawdzanie dostępności nowych wersji.
+Dostępność funkcji zależy od możliwości sprzętowych odbiornika, systemu Enigma2 oraz obsługi danego strumienia wideo.
+
+W niektórych konfiguracjach możliwe jest eksperymentalne wykorzystanie FFmpeg.
+
+**Ściana czterech kamer**
+
+Możliwość wyświetlania zdjęć JPEG z maksymalnie czterech kamer w jednym widoku.
+
+**Patrol kamer**
+
+Automatyczne przechodzenie pomiędzy wybranymi kamerami udostępniającymi zdjęcia JPEG.
 
 ---
 
-## 🌐 Obsługa języków PL / EN
+## 🌐 ONVIF i sterowanie PTZ
 
-Od wersji **2.0.2** OpenCamView obsługuje dwa języki interfejsu:
+OpenCamView obsługuje wybrane funkcje protokołu ONVIF, dzięki czemu można łatwiej skonfigurować zgodne kamery sieciowe.
 
-- **Polski** – polskie menu i komunikaty.
-- **English** – angielskie menu i komunikaty.
-- **System / Auto** – automatyczne dopasowanie do ustawień językowych Enigma2.
+Dostępne możliwości obejmują:
 
-### Jak zmienić język?
+- Pobieranie informacji o urządzeniu.
+- Wykrywanie profili kamery.
+- Pobieranie adresów strumieni RTSP.
+- Pobieranie adresów snapshot JPEG.
+- Podstawowe sterowanie ruchem kamery PTZ.
+- Zatrzymywanie ruchu kamery.
 
-1. Uruchom OpenCamView.
-2. Naciśnij **MENU**.
-3. Wybierz **Narzędzia → Język / Language**.
-4. Wskaż Polski, English lub System / Auto.
-5. Zatwierdź wybór przyciskiem OK.
-
-Nowy język jest stosowany bez restartu GUI na ekranie głównym. Kolejne okna korzystają z wybranego języka.
-
-Ustawienie jest zapisywane i pozostaje aktywne po ponownym uruchomieniu wtyczki.
-
-Zmiana języka nie usuwa zapisanych kamer.
+Sterowanie PTZ dostępne jest wyłącznie w urządzeniach obsługujących odpowiednie funkcje ONVIF.
 
 ---
 
-## 🔄 Sprawdzanie aktualizacji
+## 🔍 Skaner sieci lokalnej
 
-OpenCamView posiada funkcję sprawdzania dostępności nowszej wersji.
+Wbudowany skaner LAN umożliwia wyszukiwanie urządzeń odpowiadających na zapytania RTSP w prywatnej sieci lokalnej.
+
+Po wykryciu serwera można dodać jego adres do konfiguracji kamery.
+
+**Ważne:** skaner nie wyszukuje haseł ani nie odgaduje ścieżek transmisji. W przypadku niektórych kamer konieczne jest ręczne wprowadzenie właściwego adresu RTSP.
+
+---
+
+## 🌍 NOWOŚĆ – Polski i angielski interfejs
+
+Od wersji **OpenCamView 2.0.2** dostępna jest obsługa języka angielskiego.
+
+Użytkownik może wybrać:
+
+- 🇵🇱 **Polski** – polskie menu i komunikaty.
+- 🇬🇧 **English** – angielskie menu i komunikaty.
+- **System / Auto** – automatyczne dopasowanie języka do ustawień Enigma2.
+
+**Zmiana języka:**
+
+MENU → Narzędzia → Język / Language
+
+Wybrany język zostaje zapisany. Zmiana jest stosowana na ekranie głównym bez konieczności ponownego uruchamiania GUI, a kolejne okna korzystają z nowych ustawień językowych.
+
+Zmiana języka nie wpływa na zapisane kamery.
+
+---
+
+## 🔄 NOWOŚĆ – Sprawdzanie aktualizacji
+
+OpenCamView 2.0.2 wprowadza możliwość sprawdzania dostępności nowych wydań bezpośrednio z poziomu wtyczki.
 
 **MENU → Narzędzia → Sprawdź aktualizacje**
 
-Wtyczka:
+Funkcja sprawdza informacje o najnowszym wydaniu w oficjalnym repozytorium projektu na GitHubie.
 
-- Pobiera informacje o aktualnym wydaniu z pliku `version.json` przez HTTPS.
-- Porównuje wersję zainstalowaną z dostępną.
-- Wyświetla informację o wyniku sprawdzenia.
-- Informuje o dostępnej nowszej wersji i zmianach.
+Użytkownik otrzymuje informację, czy korzysta z aktualnej wersji, czy dostępna jest nowsza.
 
-**Ważne:** funkcja jedynie sprawdza aktualizacje. Nie pobiera ani nie instaluje nowych pakietów automatycznie.
-
-Do działania wymagany jest dostęp do internetu.
+**Uwaga:** sprawdzanie aktualizacji nie oznacza automatycznej instalacji. Instalację nowego wydania wykonuje się osobno.
 
 ---
 
-## 🎮 Obsługa pilota
+## 🎮 Sterowanie pilotem
 
 | Przycisk | Funkcja |
 |---|---|
-| OK | Podgląd pełnoekranowy |
-| EXIT | Powrót / zamknięcie |
-| CZERWONY | Usuń kamerę |
-| ZIELONY | Dodaj kamerę |
-| ŻÓŁTY | Edytuj kamerę |
-| NIEBIESKI | Skaner LAN / ONVIF / opcje |
-| INFO | Podgląd JPEG na TV |
+| OK | Pełnoekranowy podgląd kamery |
+| EXIT | Zamknij / powrót do TV |
+| 🔴 Czerwony | Usuń kamerę |
+| 🟢 Zielony | Dodaj kamerę |
+| 🟡 Żółty | Edytuj kamerę |
+| 🔵 Niebieski | Opcje / skaner LAN / ONVIF |
+| INFO | Podgląd JPEG podczas oglądania TV |
 | 0 | Przypisz kamerę jako domofon |
 | 1 | Otwórz kamerę domofonu |
-| 2 | Eksport do bukietu Enigma2 |
-| 3 | Eksport M3U |
+| 2 | Eksport do bukietu |
+| 3 | Eksport listy M3U |
 | 4 | Pomoc |
-| 5 | Ulubione |
+| 5 | Ulubione kamery |
 | 6 | Test serwera RTSP |
 | 7 | Ściana kamer JPEG |
 | 8 | Patrol kamer |
-| 9 | Włącz / zamknij PiP OpenCamView |
+| 9 | Picture-in-Picture |
 | MENU | Narzędzia i ustawienia |
 
-Opisy kolorowych przycisków są zgodne z ich funkcjami na pilocie.
-
-W skanerze LAN:
-
-- Czerwony – zamknij.
-- Zielony – rozpocznij skanowanie.
-- Żółty – dodaj wykryty adres IP.
-- Niebieski – pomoc.
-
-W oknie JPEG niebieski przycisk otwiera podstawowe sterowanie ONVIF/PTZ, jeżeli jest dostępne.
+Funkcje kolorowych przycisków mogą zmieniać się zależnie od otwartego okna. Ich aktualne przeznaczenie jest wyświetlane na ekranie.
 
 ---
 
-## 📷 Jak dodać kamerę?
+## 💾 Kopie bezpieczeństwa i ochrona ustawień
 
-1. Uruchom OpenCamView z menu wtyczek Enigma2.
-2. Naciśnij **ZIELONY** przycisk pilota.
-3. Wprowadź nazwę kamery.
-4. Podaj pełny adres RTSP lub HTTP/HTTPS.
-5. Opcjonalnie uzupełnij adres JPEG i strumienia pomocniczego.
-6. Zapisz ustawienia.
-7. Zaznacz kamerę i naciśnij OK, aby uruchomić obraz.
+OpenCamView wyposażono w mechanizmy zabezpieczające zapisane konfiguracje kamer.
 
-Przykładowy format adresu RTSP:
+Dostępne są:
 
-`rtsp://LOGIN:HASLO@IP_KAMERY:554/SCIEZKA_STRUMIENIA`
+- Automatyczne kopie zapasowe.
+- Ręczne tworzenie kopii konfiguracji.
+- Przywracanie zapisanych ustawień.
+- Odzyskiwanie bazy z kopii `.bak`.
+- Kontrola poprawności wprowadzanych danych.
+- Ochrona dostępu do prywatnych plików konfiguracyjnych.
 
-Dokładna ścieżka zależy od producenta i modelu kamery.
+Aktualizacja wtyczki nie wymaga ponownego dodawania wcześniej zapisanych kamer.
 
-Alternatywnie można użyć funkcji:
-
-**NIEBIESKI → Dodaj kamerę ONVIF**
-
-Następnie podać adres IP, port ONVIF oraz dane logowania do urządzenia.
+**Uwaga dotycząca prywatności:** kopie konfiguracji i eksportowane listy mogą zawierać adresy kamer oraz dane logowania. Takich plików nie należy udostępniać publicznie.
 
 ---
 
-## 📺 JPEG na TV i Picture-in-Picture
+## 📦 Instalacja OpenCamView 2.0.2
 
-### JPEG na TV
+Wtyczka jest przeznaczona dla odbiorników Enigma2 z **Pythonem 3**.
 
-Funkcja umożliwia wyświetlanie zdjęć z kamery na ekranie telewizora podczas oglądania bieżącego kanału.
+Dostępne są pakiety IPK i DEB.
 
-Obraz jest odświeżany co kilka sekund.
+### Instalacja internetowa – SSH / Telnet
 
-Nie jest to płynny strumień wideo. Wymagany jest poprawny adres snapshot JPEG.
+`wget -q -O - https://raw.githubusercontent.com/OliOli2013/OpenCamView-Plugin/main/installer.sh | /bin/sh`
 
-### PiP – obraz w obrazie
+Instalator rozpoznaje dostępny menedżer pakietów, pobiera odpowiedni plik i sprawdza jego integralność za pomocą SHA-256.
 
-OpenCamView podejmuje próbę wyświetlenia strumienia kamery w osobnym oknie.
+### Instalacja ręczna – IPK
 
-Działanie zależy od:
+Dla systemów korzystających z opkg:
 
-- Możliwości sprzętowych tunera.
-- Systemu Enigma2.
-- Obsługi drugiego dekodera.
-- Kodeka i formatu strumienia kamery.
-- Obsługi RTSP przez odtwarzacz.
+`opkg install /tmp/enigma2-plugin-extensions-opencamview_2.0.2_all.ipk`
 
-Dostępny jest również eksperymentalny tryb pośredni FFmpeg, wymagający odpowiedniego oprogramowania na tunerze.
+### Instalacja ręczna – DEB
 
-**PiP nie jest gwarantowany na wszystkich odbiornikach Enigma2.**
+Dla systemów korzystających z dpkg:
 
-Jeśli PiP nie działa, zalecany jest podgląd JPEG na TV.
+`dpkg -i /tmp/enigma2-plugin-extensions-opencamview_2.0.2_all.deb`
 
----
+Przed instalacją ręczną należy skopiować odpowiedni pakiet do katalogu `/tmp` odbiornika.
 
-## 📦 Instalacja OpenCamView
+**Po instalacji należy uruchomić ponownie GUI Enigma2.**
 
-Wtyczka przeznaczona jest dla odbiorników Enigma2 opartych na Pythonie 3.
+### Informacja dla użytkowników aktualnej wersji
 
-Obsługiwane są pakiety IPK i DEB, zgodnie z systemem zarządzania pakietami zastosowanym w danym obrazie.
-
-### Automatyczna instalacja przez terminal
-
-Wykonaj:
-
-```bash
-wget -q -O - https://raw.githubusercontent.com/OliOli2013/OpenCamView-Plugin/main/installer.sh | /bin/sh
-```
-
-Instalator:
-
-- Sprawdza obecność Pythona 3.
-- Rozpoznaje dostępny menedżer pakietów.
-- Pobiera odpowiedni pakiet IPK lub DEB.
-- Weryfikuje sumę SHA-256.
-- Uruchamia instalację pakietu.
-
-**Po instalacji wymagany jest restart GUI Enigma2.**
-
-### Ręczna instalacja IPK
-
-Skopiuj pakiet do katalogu `/tmp`, następnie wykonaj:
-
-```bash
-opkg install /tmp/enigma2-plugin-extensions-opencamview_2.0.2_all.ipk
-```
-
-### Ręczna instalacja DEB
-
-```bash
-dpkg -i /tmp/enigma2-plugin-extensions-opencamview_2.0.2_all.deb
-```
-
-Nie instaluj pakietu DEB w systemie korzystającym z opkg ani IPK w systemie dpkg.
-
-### Gdy wersja jest już zainstalowana
-
-Jeżeli podczas instalacji pojawi się komunikat:
+Jeżeli instalator wyświetli komunikat:
 
 `matches the installed version`
 
-oznacza to, że system posiada już tę samą wersję OpenCamView.
+oznacza to, że na odbiorniku jest już zainstalowana ta sama wersja OpenCamView.
 
-Nie jest to uszkodzenie pakietu. Ponowna instalacja nie jest wymagana.
-
-Obecny instalator może w takim przypadku zakończyć działanie komunikatem błędu opkg. Nie oznacza to utraty konfiguracji.
-
-W razie problemów z działaniem zainstalowanej wtyczki można przeprowadzić reinstalację naprawczą po wykonaniu kopii ustawień.
+System opkg może w takiej sytuacji odmówić ponownej instalacji. Nie oznacza to uszkodzenia wtyczki ani utraty zapisanych danych.
 
 ---
 
-## 🔐 Konfiguracja i bezpieczeństwo
+## 🛠 Zgodność z odbiornikami Enigma2
 
-OpenCamView zapisuje konfigurację kamer w katalogu Enigma2.
+OpenCamView został przygotowany dla środowiska **Enigma2 / Python 3**.
 
-**Lista kamer:**
+Może pracować z kompatybilnymi obrazami Enigma2, takimi jak OpenATV, OpenPLi oraz innymi systemami opartymi na Pythonie 3.
 
-`/etc/enigma2/opencamview.json`
+Zakres dostępnych funkcji może różnić się w zależności od odbiornika.
 
-**Ustawienia:**
+**Istotne ograniczenia:**
 
-`/etc/enigma2/opencamview_settings.json`
+- Odtwarzanie zależy od obsługi kodeków i strumieni w danym systemie.
+- PiP wymaga odpowiednich możliwości sprzętowych.
+- Nie wszystkie kamery wspierają ONVIF lub sterowanie PTZ.
+- Podgląd JPEG wymaga dostępnego adresu snapshot.
+- Eksperymentalne funkcje FFmpeg mogą wymagać dodatkowego oprogramowania.
 
-**Automatyczna kopia:**
-
-`/etc/enigma2/opencamview.json.bak`
-
-**Eksport ręczny:**
-
-`/etc/enigma2/opencamview-export.json`
-
-Mechanizm zapisu wykorzystuje:
-
-- Atomowy zapis plików JSON.
-- Automatyczne kopie poprzedniej konfiguracji.
-- Walidację danych.
-- Uprawnienia 0600 dla prywatnych plików konfiguracyjnych.
-- Ochronę przed zastąpieniem uszkodzonej bazy pustą listą podczas zwykłego zapisu.
-
-**Uwaga:** konfiguracje, pliki M3U i eksporty mogą zawierać adresy kamer wraz z loginami i hasłami. Nie należy ich publikować ani udostępniać osobom nieuprawnionym.
+Pakiet oznaczony jako `Architecture: all` nie gwarantuje pełnej zgodności z każdym odbiornikiem.
 
 ---
 
-## 🆕 Historia wydań
+## 🆕 Historia wersji
 
 ### OpenCamView 2.0.2 – 27.10.2026
 
-- Dodano obsługę języka polskiego i angielskiego.
-- Dodano ręczny wybór języka w menu.
-- Dodano automatyczne dopasowanie języka do Enigma2.
-- Dodano sprawdzanie aktualizacji przez HTTPS.
-- Zachowano ustawienia kamer i zgodność konfiguracji wcześniejszych wersji.
-- Rozszerzono testy językowe i aktualizacji.
+**Aktualizacja językowa i funkcjonalna**
+
+- Dodano język angielski.
+- Dodano ręczny wybór języka polskiego i angielskiego.
+- Dodano automatyczny wybór języka systemowego.
+- Dodano funkcję sprawdzania aktualizacji.
+- Zachowano kompatybilność z konfiguracjami poprzednich wersji.
+- Rozszerzono testy działania interfejsu.
 
 ### OpenCamView 2.0.1 – 22.10.2026
 
-- Naprawiono crash podczas dodawania kamery (`TypeError: 'dict' object is not callable`).
-- Poprawiono kolorowe przyciski i ich opisy.
-- Usprawniono nawigację i komunikaty.
-- Dodano stopkę z datą, stroną i podpisem autora.
+**Poprawki stabilności i interfejsu**
+
+- Usunięto błąd powodujący crash Enigma2 podczas dodawania kamery.
+- Poprawiono oznaczenia kolorowych przycisków.
+- Usprawniono działanie kreatora kamer.
+- Dodano informacje o autorze i projekcie w interfejsie.
 
 ### OpenCamView 2.0.0 – 22.10.2026
 
-- Przebudowano interfejs w stylu AIO.
-- Rozbudowano zarządzanie kamerami.
-- Dodano obsługę ONVIF/PTZ.
-- Dodano podgląd JPEG na TV i ścianę kamer.
-- Dodano patrol kamer i eksperymentalny PiP.
-- Dodano eksport do bukietów i M3U.
-- Rozbudowano zabezpieczenia i system kopii konfiguracji.
+**Gruntowna przebudowa wtyczki**
+
+- Nowy interfejs w stylu AIO.
+- Rozbudowana obsługa kamer IP.
+- Integracja RTSP i ONVIF.
+- Podgląd JPEG na TV.
+- Eksperymentalny PiP.
+- Ściana kamer i patrol.
+- Podstawowe sterowanie PTZ.
+- Skaner sieci LAN.
+- Ulubione i obsługa domofonu.
+- Eksport bukietów i M3U.
+- Rozbudowany system kopii bezpieczeństwa.
 
 ---
 
-## 🛠 Testowanie i rozwój
+## 🤝 Informacje i wsparcie
 
-Projekt zawiera testy automatyczne oraz skrypty budowania pakietów.
+OpenCamView jest rozwijany jako część projektów **AIO Team** dla społeczności użytkowników Enigma2.
 
-Uruchomienie testów w katalogu projektu:
+Uwagi dotyczące działania, propozycje nowych funkcji i zgłoszenia problemów pomagają rozwijać wtyczkę i zwiększać jej zgodność z kolejnymi odbiornikami.
 
-```bash
-PYTHONPATH=. python3 -m unittest discover -s tests -v
-```
+Przy zgłaszaniu problemów przydatne są informacje o modelu tunera, wersji systemu Enigma2 oraz opis zachowania wtyczki.
 
-Budowanie pakietów:
-
-```bash
-bash scripts/build_packages.sh
-```
-
-Weryfikacja sum kontrolnych:
-
-```bash
-cd packages
-sha256sum -c SHA256SUMS
-```
-
-Wymagane narzędzia na komputerze budującym: Python 3, dpkg-deb, ar, tar i sha256sum.
-
-### GitKraken / Linux Mint
-
-Przy aktualizacji kodu należy pracować w istniejącym katalogu lokalnego repozytorium, zachowując jego historię `.git`.
-
-Przed skopiowaniem nowej wersji zaleca się wykonanie kopii projektu.
-
-Po naniesieniu zmian należy sprawdzić status Git, wykonać testy, utworzyć commit i przesłać go na gałąź `main`.
-
-Nie należy ponownie inicjalizować istniejącego repozytorium ani kopiować do niego obcego katalogu `.git`.
-
----
-
-## ⚠️ Kompatybilność i ograniczenia
-
-OpenCamView rozwijany jest z myślą o obrazach Enigma2 korzystających z Pythona 3, między innymi OpenATV, OpenPLi i podobnych.
-
-Nie oznacza to jednak gwarancji działania wszystkich funkcji na każdej wersji systemu.
-
-Obsługa odtwarzania, kodeków H.264/H.265, sprzętowego PiP oraz funkcji ONVIF/PTZ może różnić się zależnie od modelu odbiornika i kamery.
-
-Testy zgodności nadal trwają.
-
-W przypadku wystąpienia problemu warto podać model tunera, wersję systemu, wersję Pythona i opis problemu. Jeśli wystąpi crash, można dołączyć log po usunięciu z niego danych dostępu do kamer.
-
----
-
-## 🌐 Strona projektu
-
-**AIO TunerHub – AIO Team**
-
+**Oficjalna strona projektu:**  
 https://aio-iptv-projekt.pages.dev/
 
-Zapraszam do testowania, zgłaszania błędów oraz proponowania kolejnych funkcji.
+**Repozytorium OpenCamView:**  
+https://github.com/OliOli2013/OpenCamView-Plugin
 
-Celem OpenCamView jest stworzenie praktycznego i wygodnego narzędzia do monitoringu domowego, zintegrowanego z Enigma2.
+---
 
-**OpenCamView – by: Paweł Pawełek**  
-**© 2026 AIO Team**
+**OpenCamView 2.0.2**  
+**by Paweł Pawełek | AIO Team**
+
+*Monitoring IP bezpośrednio na Twoim odbiorniku Enigma2.*
