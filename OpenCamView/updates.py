@@ -32,7 +32,7 @@ def check_update(opener=None):
     notes = data.get('notes', {})
     if not isinstance(notes, dict):
         notes = {}
-    notes = {x:str(notes.get(x,'')).replace('\r',' ').replace('\n',' ')[:200] for x in ('pl','en')}
+    notes = {x:str(notes.get(x,'')).replace('\r',' ').replace('\n',' ')[:200] for x in ('pl','en','it','de','ar','ru')}
     date = data.get('date', '')
     if not isinstance(date, str) or len(date)>16:
         date = ''

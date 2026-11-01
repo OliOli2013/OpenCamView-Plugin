@@ -1,3 +1,13 @@
+# OpenCamView – historia zmian
+
+## 2.0.3 – 01.11.2026
+
+- Dodano język włoski (na bazie tłumaczenia Lululli), niemiecki, arabski i rosyjski. Łącznie 6 języków PL/EN/IT/DE/AR/RU.
+- Automatyczny wybór języka zgodnie z Enigma2; zapis wyboru bez usuwania kamer.
+- Wielojęzyczne sprawdzanie aktualizacji i opisy nowych wydań.
+- Instalator rozpoznaje zainstalowaną tę samą wersję i kończy pracę bez błędu opkg/dpkg.
+- Uwaga: kierunek RTL i kształtowanie arabskich liter wymagają zgodnego fontu/renderera Enigma2.
+
 ## v2.0.2 — 27.10.2026 (PL/EN + aktualizacje)
 
 - MENU → Narzędzia → Język / Language: ręczny wybór Polski / English / System Auto, zapisywany prywatnie w `/etc/enigma2/opencamview_settings.json`.
@@ -6,7 +16,6 @@
 - Nowe testy zmiany języka i obsługi poprawnych, uszkodzonych i niedostępnych manifestów.
 - Zachowano kompatybilność bazy kamer, ustawienia PTZ/RTSP i poprawkę crasha z 2.0.1.
 
-# OpenCamView changelog
 
 ## v2.0.0 — 22.10.2026 (wersja do testów na tunerach)
 

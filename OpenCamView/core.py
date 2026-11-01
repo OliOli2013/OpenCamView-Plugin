@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .i18n import tr
+from .i18n import tr, SUPPORTED
 """Portable camera database: v1.3 migration, stable IDs, backup, atomic writes."""
 import copy, json, os, tempfile, uuid
 from urllib.parse import urlsplit, urlunsplit, quote
@@ -122,7 +122,7 @@ class Manager:
         return defaults
 
     def set_language(self, mode):
-        if mode not in ('system','pl','en'):
+        if mode not in SUPPORTED:
             raise ValueError('Unsupported language')
         settings=self.setting()
         settings['language']=mode

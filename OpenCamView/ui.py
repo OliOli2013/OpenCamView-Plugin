@@ -17,9 +17,10 @@ from .core import Manager,masked,credentials
 from . import VERSION,onvif,theme
 from .i18n import tr,set_language,get_language
 from .updates import check_update
+from .update_messages import format_update_info
 
 # Wydanie - metadane widoczne w stopce kazdego ekranu.
-RELEASE_DATE = "27.10.2026"
+RELEASE_DATE = "01.11.2026"
 WEBSITE = "https://aio-iptv-projekt.pages.dev/"
 CREDITS = "%s  |  %s  |  by: Paweł Pawełek" % (WEBSITE, RELEASE_DATE)
 from .network import Scanner,probe,jpeg
@@ -105,7 +106,8 @@ class MainScreen(Screen):
 
     def language_menu(self):
         chosen=self.manager.setting().get('language','system')
-        items=[('System / Auto','system'),('Polski','pl'),('English','en')]
+        items=[('System / Auto','system'),('Polski','pl'),('English','en'),
+               ('Italiano','it'),('Deutsch','de'),('العربية','ar'),('Русский','ru')]
         self.session.openWithCallback(self.language_chosen,ChoiceBox,
             title='Język / Language [%s]'%chosen,list=items)
 
@@ -123,15 +125,7 @@ class MainScreen(Screen):
         self.run_job(tr('Sprawdzam aktualizacje...'),check_update,self.updates_result)
 
     def updates_result(self,info):
-        from .i18n import get_language
-        if info['newer']:
-            if get_language()=='en':
-                message='New version available: %s (installed: %s).\n%s\nInstall the update using the official OpenCamView installer from the project page.'%(info['latest'],info['installed'],info['notes']['en'])
-            else:
-                message='Dostępna nowa wersja: %s (zainstalowana: %s).\n%s\nAktualizację zainstaluj oficjalnym instalatorem OpenCamView ze strony projektu.'%(info['latest'],info['installed'],info['notes']['pl'])
-        else:
-            message=('You have the latest version: %s' if get_language()=='en' else 'Masz najnowszą wersję: %s')%info['installed']
-        self.alert(message)
+        self.alert(format_update_info(info, get_language()))
 
     def current_index(self):
         x=self['menu'].getCurrent()
